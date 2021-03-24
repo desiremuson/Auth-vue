@@ -6,7 +6,7 @@
           <v-flex xs12 sm8 md4>
             <v-card class="elevation-12">
               <v-toolbar dark color="dark">
-                <v-toolbar-title>Login </v-toolbar-title>
+                <v-toolbar-title>Forgot Password </v-toolbar-title>
               </v-toolbar>
               <v-card-text>
                 <v-form>
@@ -17,22 +17,11 @@
                     label="E-mail"
                     required
                   ></v-text-field>
-                  <v-text-field
-                    id="password"
-                    prepend-icon="lock"
-                    v-model="password"
-                    label="Password"
-                    type="password"
-                  ></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
-				  	<p class="ma-4">
-                  <router-link to="forgot"> Forgot password?</router-link>
-                </p>
                 <v-spacer></v-spacer>
-                <v-btn color="dark" @click="login">Login</v-btn>
-				
+                <v-btn color="dark" @click="forgot">Submit</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -43,13 +32,12 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
-  name: "Login",
+	 name: "Forgot",
   data() {
     return {
       email: "",
-      password: "",
+   
       emailRules: [
         (v) => !!v || "E-mail is required",
         (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
@@ -57,25 +45,10 @@ export default {
     };
   },
   methods: {
-    async login() {
-      const response = await axios.post(
-        "login_check",
-        // {
-        //   headers: {
-        //     "X-Requested-With": "XMLHttpRequest",
-        //     "Content-Type": "application/json",
-        //   },
-        // },
-        {
-          email: this.email,
-          password: this.password,
-        }
-      );
-      console.log("TKEN IS .....", response.data.token);
-      localStorage.setItem("token", response.data.token);
-      this.$store.dispatch("user", response.data);
-      this.$router.push("/");
-    },
+	  forgot(){
+		  
+	  }
+  
   },
 };
 </script>
